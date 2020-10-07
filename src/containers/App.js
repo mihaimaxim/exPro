@@ -6,8 +6,6 @@ import Homepage from './homepage/Homepage'
 import Spinner from '../components/UI/spinner/Spinner'
 
 const App = props => {
-	console.log('App rendering...')
-
 	const AsnycAbout = React.lazy(() => {
 		return import('../components/about/About')
 	})
@@ -26,11 +24,9 @@ const App = props => {
 	)
 
 	return (
-		<div>
-			<Layout>
-				<Suspense fallback={<Spinner />}>{routes}</Suspense>
-			</Layout>
-		</div>
+		<Layout>
+			<Suspense fallback={<Spinner />}>{routes}</Suspense>
+		</Layout>
 	)
 }
 
