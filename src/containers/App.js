@@ -14,10 +14,15 @@ const App = props => {
 		return import('./contact/Contact')
 	})
 
+	const AsyncAuth = React.lazy(() => {
+		return import('./auth/Auth')
+	})
+
 	const routes = (
 		<Switch>
 			<Route path='/about' render={props => <AsnycAbout {...props} />} />
 			<Route path='/contact' render={props => <AsyncContact {...props} />} />
+			<Route path='/auth' render={props => <AsyncAuth {...props} />} />
 			<Route path='/' exact component={Homepage} />
 			<Redirect to='/' />
 		</Switch>
