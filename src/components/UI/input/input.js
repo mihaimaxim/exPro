@@ -10,7 +10,11 @@ const Input = props => {
 	if (props.invalid && props.shouldValidate && props.touched) {
 		inputStyle.push(style.Invalid)
 
-		validationError = <p className={style.ValidationError}>{props.errorMessage}</p>
+		validationError = (
+			<p className={style.ValidationError}>
+				{props.errorMessage} {props.valueType}
+			</p>
+		)
 	}
 
 	switch (props.elementType) {

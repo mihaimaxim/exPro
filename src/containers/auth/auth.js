@@ -4,6 +4,7 @@ import { Redirect } from 'react-router'
 
 import Input from '../../components/UI/input/Input'
 import Spinner from '../../components/UI/spinner/Spinner'
+import Button from '../../components/UI/button/Button'
 
 import style from './Auth.module.css'
 
@@ -52,6 +53,8 @@ class Auth extends Component {
 	}
 
 	componentDidMount() {}
+
+	componentDidUpdate() {}
 
 	checkValidity = (value, rules) => {
 		let isValid = true
@@ -168,7 +171,15 @@ class Auth extends Component {
 			<div className={style.Auth}>
 				{authRedirect}
 				{errorMessage}
-				<form onSubmit={this.submitHandler}>{form}</form>
+				<form onSubmit={this.submitHandler}>
+					{form}
+					<Button btnType='Success'>
+						{this.state.signInMode ? 'SIGN IN' : 'SIGN UP'}
+					</Button>
+				</form>
+				<Button btnType='Danger' clicked={this.toggleSignInMode}>
+					Toggle signing mode
+				</Button>
 			</div>
 		)
 	}

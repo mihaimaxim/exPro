@@ -7,9 +7,13 @@ import style from './NavItems.module.css'
 const NavItems = props => {
 	return (
 		<ul className={style.NavItems}>
-			<NavItem link='/about'>About</NavItem>
-			<NavItem link='/contact'>Contact</NavItem>
-			<NavItem link='/auth'>Authenticate</NavItem>
+			{props.isAuthenticated ? <NavItem link='/about'>About</NavItem> : null}
+			{props.isAuthenticated ? <NavItem link='/contact'>Contact</NavItem> : null}
+			{!props.isAuthenticated ? (
+				<NavItem link='/auth'>Authenticate</NavItem>
+			) : (
+				<NavItem link='/logout'>Logout</NavItem>
+			)}
 		</ul>
 	)
 }
