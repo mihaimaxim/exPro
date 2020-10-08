@@ -11,7 +11,10 @@ import authReducer from './store/reducers/auth'
 
 import './index.css'
 
-const store = createStore(authReducer)
+const store = createStore(
+	authReducer,
+	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
 
 const app = (
 	<Provider store={store}>
