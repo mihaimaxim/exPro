@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import style from './Contact.module.css'
 
-class About extends Component {
+class Contact extends Component {
 	state = {
 		controls: {
 			name: {
@@ -90,4 +90,4 @@ class About extends Component {
 	}
 }
 
-export default About
+export default Contact
