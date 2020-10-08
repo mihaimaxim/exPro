@@ -176,10 +176,10 @@ class Auth extends Component {
 
 const mapStateToProps = state => {
 	return {
-		localLoading: state.authReducer.loading,
-		localError: state.authReducer.error,
-		isAuthenticated: state.authReducer.token !== null,
-		authRedirectPath: state.authReducer.authRedirectPath,
+		localLoading: state.loading,
+		localError: state.error,
+		isAuthenticated: state.token !== null,
+		authRedirectPath: state.authRedirectPath,
 	}
 }
 
