@@ -53,7 +53,7 @@ const App = props => {
 	}
 
 	return (
-		<Layout>
+		<Layout path={props.history.location.pathname}>
 			<Suspense fallback={<Spinner />}>{routes}</Suspense>
 		</Layout>
 	)

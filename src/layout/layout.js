@@ -6,8 +6,20 @@ import Toolbar from '../components/navigation/toolbar/Toolbar'
 import style from './Layout.module.css'
 
 const Layout = props => {
+	let background = null
+
+	if (props.path === '/') {
+		background = [style.Layout, style.Home].join(' ')
+	} else if (props.path === '/about') {
+		background = [style.Layout, style.About].join(' ')
+	} else if (props.path === '/contact') {
+		background = [style.Layout, style.Contact].join(' ')
+	} else {
+		background = [style.Layout, style.Auth].join(' ')
+	}
+
 	return (
-		<div className={style.Layout}>
+		<div className={background}>
 			<Toolbar isAuthenticated={props.isAuthenticated} />
 			<main className={style.Content}>{props.children}</main>
 		</div>
