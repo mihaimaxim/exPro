@@ -24,3 +24,6 @@ yarn-error.log*
 
 # my keys
 /src/keys.js
+
+# firebase
+/.firebase
