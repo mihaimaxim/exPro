@@ -11,6 +11,7 @@ import App from './containers/App'
 import authReducer from './store/reducers/auth'
 
 import './index.css'
+// import 'bootstrap/dist/css/bootstrap.min.css'
 
 // const composeEnhancers = process.env.NODE_ENV
 // 	? window.__REDUX_DEVTOOLS_EXTENSION__COMPOSE
@@ -21,13 +22,13 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(authReducer, composeEnhancers(applyMiddleware(thunk)))
 
 const app = (
-	<Provider store={store}>
-		<BrowserRouter>
-			<React.StrictMode>
-				<App />
-			</React.StrictMode>
-		</BrowserRouter>
-	</Provider>
+   <Provider store={store}>
+      <BrowserRouter>
+         <React.StrictMode>
+            <App />
+         </React.StrictMode>
+      </BrowserRouter>
+   </Provider>
 )
 
 ReactDOM.render(app, document.getElementById('root'))

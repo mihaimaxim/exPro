@@ -1,31 +1,38 @@
 .Layout {
-	margin: auto;
+   margin: auto;
 }
 
 .Home {
-	background: url('../assets/railway.jpg') no-repeat center center;
-	background-size: cover;
+   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url('../assets/railway.jpg') no-repeat center center;
+   background-size: cover;
 }
 
 .About {
-	background: url('../assets/highway.jpg') no-repeat center center;
-	background-size: cover;
+   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url('../assets/highway.jpg') no-repeat center center;
+   background-size: cover;
 }
 
 .Contact {
-	background: url('../assets/golden-gate-bridge-architecture.jpg') no-repeat center
-		center;
-	background-size: cover;
+   background: url('../assets/golden-gate-bridge-architecture.jpg') no-repeat center
+      center;
+   background-size: cover;
 }
 
 .Auth {
-	background: url('../assets/desk.jpg') no-repeat center
-		center;
-	background-size: cover;
+   background: url('../assets/desk.jpg') no-repeat center center;
+   background-size: cover;
+}
+
+.Portfolio {
+   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url('../assets/portfolio.jpg') no-repeat center center;
+   background-size: cover;
+   height: 50vh;
 }
 
 .Content {
-	width: 75%;
-	margin: 0 auto;
-	height: 100vh;
+   margin: 0 auto;
+   height: 100vh;
 }

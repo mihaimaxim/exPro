@@ -1,0 +1,75 @@
+.Portfolio h1 {
+   width: 100%;
+   text-transform: uppercase;
+}
+
+.Portfolio hr {
+   margin: 9px auto;
+   width: 90%;
+   border: 2px solid #b8860b;
+   background: #b8860b;
+   border-radius: 3px;
+}
+
+.Heading {
+   position: relative;
+   color: papayawhip;
+   height: 50vh;
+}
+
+.ChildHeading {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+
+.Content {
+   position: relative;
+   width: 100%;
+   display: table;
+   height: 50vh;
+}
+
+.ChildContent {
+   display: table-cell;
+   position: relative;
+   width: 50%;
+
+   color: papayawhip;
+   transition: all 0.5s ease;
+   cursor: pointer;
+}
+
+.BackgroundOne {
+   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url('../../assets/highway.jpg') no-repeat center center;
+   background-size: 100%;
+}
+
+.BackgroundTwo {
+   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url('../../assets/forestBridge.jpg') no-repeat center center;
+   background-size: 100%;
+}
+
+.ChildContent:hover,
+.ChildContent:focus {
+   background-size: 120%;
+}
+
+.ChildContent span {
+   color: papayawhip;
+   font-size: xx-large;
+   opacity: 0;
+   position: absolute;
+   text-align: center;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   transition: 0.5s;
+}
+
+.ChildContent:hover span {
+   opacity: 1;
+}
