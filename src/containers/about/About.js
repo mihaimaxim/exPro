@@ -1,60 +1,64 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router'
 
 import Input from '../../components/UI/input/Input'
 import Spinner from '../../components/UI/spinner/Spinner'
-import Button from '../../components/UI/button/Button'
-
-import style from './Auth.module.css'
 
 import * as actions from '../../store/actions/index'
 
-class Auth extends Component {
+import style from './About.module.css'
+
+class About extends Component {
    state = {
       controls: {
-         email: {
+         name: {
             elementType: 'input',
-            valueType: 'email',
+            valueType: 'name',
             elementConfig: {
-               type: 'email',
-               placeholder: 'Your email',
+               type: 'text',
+               placeholder: 'Your name',
             },
             value: '',
             validation: {
                required: true,
-               isEmail: true,
-               email: new RegExp([
-                  "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$",
-               ]),
+               nameValidation: /^[A-Za-z\s]+$/,
+               minimumLength: 6,
+               maximumLength: 30,
             },
             valid: false,
             touched: false,
          },
-         password: {
+         length: {
             elementType: 'input',
-            valueType: 'password',
+            valueType: 'length',
             elementConfig: {
-               type: 'password',
-               placeholder: 'Your password',
+               type: 'number',
+               placeholder: 'Your length',
             },
             value: '',
             validation: {
                required: true,
-               minimumLength: 6,
+               lengthValidation: /[0-9]/,
             },
             valid: false,
             touched: false,
+         },
+         type: {
+            elementType: 'select',
+            elementConfig: {
+               options: [
+                  { value: 'road', displayValue: 'Road' },
+                  { value: 'bridge', displayValue: 'Bridge' },
+               ],
+            },
+            value: 'road',
+            valid: false,
          },
       },
       formIsValid: false,
       errorMessage: 'Please enter a valid',
       signInMode: true,
    }
-
-   componentDidMount() {}
-
-   componentDidUpdate() {}
 
    checkValidity = (value, rules) => {
       let isValid = true
@@ -112,17 +116,18 @@ class Auth extends Component {
    submitHandler = event => {
       event.preventDefault()
 
-      this.props.onAuth(
-         this.state.controls.email.value,
-         this.state.controls.password.value,
-         this.state.signInMode
-      )
-   }
+      const formData = {}
 
-   toggleSignInMode = () => {
-      this.setState(prevState => {
-         return { signInMode: !prevState.signInMode }
-      })
+      for (let formIdentifier in this.state.controls) {
+         formData[formIdentifier] = this.state.controls[formIdentifier].value
+      }
+
+      const contract = {
+         contractData: formData,
+         userId: this.props.localUserId,
+      }
+
+      this.props.onContractUpload(contract, this.props.localToken)
    }
 
    render() {
@@ -161,25 +166,20 @@ class Auth extends Component {
          errorMessage = <p style={{ color: 'red' }}>{this.props.localError.message}</p>
       }
 
-      let authRedirect = null
+      // let authRedirect = null
 
-      if (this.props.isAuthenticated) {
-         authRedirect = <Redirect to={this.props.authRedirectPath} />
-      }
+      // if (this.props.isAuthenticated) {
+      //    authRedirect = <Redirect to={this.props.authRedirectPath} />
+      // }
 
       return (
-         <div className={style.Auth}>
-            {authRedirect}
+         <div className={style.About}>
+            {/* {authRedirect} */}
             {errorMessage}
             <form onSubmit={this.submitHandler}>
                {form}
-               <Button btnType='Success'>
-                  {this.state.signInMode ? 'SIGN IN' : 'SIGN UP'}
-               </Button>
+               <button disabled={!this.state.formIsValid}>UPLOAD CONTRACT</button>
             </form>
-            <Button btnType='Danger' clicked={this.toggleSignInMode}>
-               Toggle signing mode
-            </Button>
          </div>
       )
    }
@@ -190,16 +190,20 @@ const mapStateToProps = state => {
       localLoading: state.auth.loading,
       localError: state.auth.error,
       isAuthenticated: state.auth.token !== null,
-      authRedirectPath: state.auth.authRedirectPath,
+      localUserId: state.auth.userId,
+      localToken: state.auth.token,
+      localContract: state.contracts.contracts,
    }
 }
 
 const mapDispatchToProps = dispatch => {
    return {
-      onAuth: (email, password, signInMode) =>
-         dispatch(actions.auth(email, password, signInMode)),
-      onSetAuthRedirectPath: path => dispatch(actions.setAuthRedirectPath(path)),
+      // onAuth: (email, password, signInMode) =>
+      //    dispatch(actions.auth(email, password, signInMode)),
+      // onSetAuthRedirectPath: path => dispatch(actions.setAuthRedirectPath(path)),
+      onContractUpload: (contractData, token) =>
+         dispatch(actions.setContract(contractData, token)),
    }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Auth)
+export default connect(mapStateToProps, mapDispatchToProps)(About)

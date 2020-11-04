@@ -1,9 +1,16 @@
 .Logo {
-	background-color: transparent;
-	height: 100%;
+   background-color: transparent;
+   height: 100%;
 }
 
 .Logo img {
-	height: 75%;
-	margin-top: 7.5px;
+   height: 9vh;
+   padding: 1.5vh;
+}
+
+@media (orientation: portrait) {
+   .Logo img {
+      height: 9vh;
+      padding: 1.5vh;
+   }
 }

@@ -16,7 +16,7 @@ const App = props => {
    }, [onAutoSignUp])
 
    const AsnycAbout = React.lazy(() => {
-      return import('../components/about/About')
+      return import('../containers/about/About')
    })
 
    const AsyncContact = React.lazy(() => {
@@ -69,7 +69,7 @@ const App = props => {
 
 const mapStateToProps = state => {
    return {
-      isAuthenticated: state.token !== null,
+      isAuthenticated: state.auth.token !== null,
    }
 }
 

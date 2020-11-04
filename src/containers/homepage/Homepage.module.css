@@ -40,3 +40,10 @@
    background: #b8860b;
    color: black;
 }
+
+@media (orientation: portrait) {
+   .Heading h3,
+   h2 {
+      display: none;
+   }
+}

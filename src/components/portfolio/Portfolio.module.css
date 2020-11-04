@@ -35,7 +35,6 @@
    display: table-cell;
    position: relative;
    width: 50%;
-
    color: papayawhip;
    transition: all 0.5s ease;
    cursor: pointer;
@@ -72,4 +71,23 @@
 
 .ChildContent:hover span {
    opacity: 1;
+}
+
+@media (orientation: portrait) {
+   .ChildContent {
+      display: table-row;
+      position: relative;
+      height: 25vh;
+      color: papayawhip;
+      transition: all 0.5s ease;
+      cursor: pointer;
+   }
+
+   .ChildContent span {
+      opacity: 1;
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      transform: translate(50%, 50%);
+   }
 }

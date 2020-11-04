@@ -16,7 +16,8 @@ const Layout = props => {
       background = [style.Layout, style.Home].join(' ')
       homeLogo = null
    } else if (props.path === '/about') {
-      background = [style.Layout, style.About].join(' ')
+      // background = [style.Layout, style.About].join(' ')
+      background = null
    } else if (props.path === '/contact') {
       background = [style.Layout, style.Contact].join(' ')
    } else if (props.path === '/auth') {
@@ -38,7 +39,7 @@ const Layout = props => {
 
 const mapStateToProps = state => {
    return {
-      isAuthenticated: state.token !== null,
+      isAuthenticated: state.auth.token !== null,
    }
 }
 
